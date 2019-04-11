@@ -1,6 +1,7 @@
 package com.example.todo;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -46,11 +47,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             password = editTextPassword.getText().toString();
             confirmPassword = editTextConfirmPassword.getText().toString();
             if (TextUtils.isEmpty(email)){
-                Toast.makeText(getApplicationContext(), "Enter valid email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Enter valid email", Toast.LENGTH_LONG).show();
                 return;
             }
             if (TextUtils.isEmpty(password) ){
-                Toast.makeText(getApplicationContext(), "Enter valid password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Enter valid password", Toast.LENGTH_LONG).show();
                 return;
             }
             if(password.length() < 8){
@@ -60,7 +61,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 return;
             }
             if(!TextUtils.equals(password, confirmPassword)){
-                Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_LONG).show();
                 editTextConfirmPassword.setText("");
                 return;
             }
@@ -78,12 +79,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     nextActivity();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"registration failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"registration failed", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
     private void nextActivity(){
-        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), Home.class));
     }
 }

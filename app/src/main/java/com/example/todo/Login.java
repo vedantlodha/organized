@@ -78,11 +78,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener
         email = editTextEmail.getText().toString().trim();
         password = editTextPassword.getText().toString();
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "Enter Valid Email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter Valid Email", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
             return;
         }
         else if(TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Enter valid password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter valid password", Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
             return;
         }
         firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -94,7 +96,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener
                             nextScreen();
                         }
                         else{
-                            Toast.makeText(getApplicationContext(), "Incorrect Credentials", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Incorrect Credentials", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -110,6 +112,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener
     }
     private void nextScreen(){
 //        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        startActivity(intent);
 
     }
 }
