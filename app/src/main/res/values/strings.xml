@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDo</string>
+    <string name="app_name">Organized</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="password">Password</string>

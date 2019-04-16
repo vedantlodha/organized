@@ -8,7 +8,14 @@ public class TaskContract {
 
     public class TaskEntry implements BaseColumns {
         public static final String TABLE = "tasks";
+        public static final String TABLE_REMINDERS = "reminders";
 
         public static final String COL_TASK_TITLE = "title";
+        public static final String COL_REMINDER_TITLE = "title";
+        public static final String COL_REMINDER_DESCRIPTION = "description";
+        public static final String COL_REMINDER_DATETIME = "datetime";
+
+
+
     }
 }

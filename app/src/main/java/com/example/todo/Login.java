@@ -26,8 +26,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener
     private String email, password;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-//    private GoogleSignInOptions googleSignInOptions;
-//    private GoogleSignInClient mGoogleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,34 +42,27 @@ public class Login extends AppCompatActivity implements View.OnClickListener
         textViewForgotPassword.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
-//        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if( currentUser != null){
             nextScreen();
         }
-
+        textViewForgotPassword.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (v == buttonLogin)
             login();
-        else if(v == textViewForgotPassword){
-            forgotPassword();
-        }
         else if (v == textViewRegister){
             register();
         }
+        else if(v == textViewForgotPassword){
+            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Login.this, ForgotPassword.class));
+        }
 
     }
-//    private void signIn() {
-//        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
-//    }
+
     private void login(){
         progressDialog.setMessage("Logging in");
         progressDialog.show();
